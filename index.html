@@ -8,7 +8,7 @@
       name="description"
       content="A simple Brunei camping landing page for browsing campsite leads, outdoor vibes, and camping gear rentals at a glance."
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=4" />
   </head>
   <body>
     <header class="site-header" aria-label="Main navigation">
@@ -18,6 +18,7 @@
       </a>
       <nav class="nav-links" aria-label="Page sections">
         <a href="#campsites">Campsites</a>
+        <a href="guide.html">Guide</a>
         <a href="#gear">Gear</a>
         <a href="#submit">Submit</a>
       </nav>
@@ -59,6 +60,23 @@
         </div>
       </section>
 
+      <section class="section featured-area" aria-labelledby="featured-title">
+        <figure class="featured-photo">
+          <img
+            src="assets/checklist-bear.png"
+            alt="Sun bear holding a camping checklist"
+          />
+        </figure>
+        <div class="featured-copy">
+          <p class="eyebrow">Best quick-look photo</p>
+          <h2 id="featured-title">See the area before you choose.</h2>
+          <p>
+            Each campsite lead should help visitors understand the setting fast: forest shade, water access, family comfort, booking effort, and whether it feels better for a first trip or a more self-reliant outdoor weekend.
+          </p>
+          <a class="text-link" href="guide.html">Match a campsite to your skill level</a>
+        </div>
+      </section>
+
       <section id="campsites" class="section campsite-section" aria-labelledby="campsites-title">
         <div class="section-heading">
           <div>
@@ -73,10 +91,9 @@
 
         <div class="filters" role="group" aria-label="Filter campsite type">
           <button class="filter-button active" type="button" data-filter="all">All</button>
-          <button class="filter-button" type="button" data-filter="forest">Forest</button>
-          <button class="filter-button" type="button" data-filter="water">Water</button>
-          <button class="filter-button" type="button" data-filter="family">Family</button>
-          <button class="filter-button" type="button" data-filter="stay">Stay</button>
+          <button class="filter-button" type="button" data-filter="park">Park</button>
+          <button class="filter-button" type="button" data-filter="beach">Beach</button>
+          <button class="filter-button" type="button" data-filter="adventure">Adventure</button>
         </div>
 
         <div class="card-grid" id="campsite-grid" aria-live="polite"></div>
@@ -89,7 +106,7 @@
             <h2 id="gear-title">Start with the basics.</h2>
           </div>
           <p>
-            Two local providers from your list, ready for tent, table, lighting, and camp setup checks before the weekend.
+            Two local providers from your list, ready for tent, table, lighting, and camp setup checks before the weekend. Use the guide if you are not sure what to pack, rent, or buy.
           </p>
         </div>
 
@@ -111,6 +128,10 @@
             </div>
             <a class="text-link" href="https://www.instagram.com/glextraenterprise/" target="_blank" rel="noreferrer">Open Instagram</a>
           </article>
+        </div>
+        <div class="guide-cta">
+          <span>New to camping or planning for a bigger group?</span>
+          <a class="button primary" href="guide.html#packing-levels">Open packing guide</a>
         </div>
       </section>
 

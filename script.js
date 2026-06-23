@@ -6,7 +6,8 @@ const campsites = [
     area: "Jalan Bukit Sulang",
     mood: "Resort camp",
     effort: "Check booking",
-    tags: ["forest", "family", "stay"],
+    category: "adventure",
+    bestFor: "Beginners, families",
     summary: "A resort-hotel style nature stay from your Google result list, useful for gentler camping weekends and family trips."
   },
   {
@@ -16,7 +17,8 @@ const campsites = [
     area: "Kampong Peliunan",
     mood: "Outdoor park",
     effort: "Check access",
-    tags: ["water", "family"],
+    category: "park",
+    bestFor: "Beginners, day groups",
     summary: "A nature and outdoor park lead in Temburong, best treated as a day-camp or picnic-style option until facilities are confirmed."
   },
   {
@@ -26,7 +28,8 @@ const campsites = [
     area: "Batang Duri, Temburong",
     mood: "Eco village stay",
     effort: "Check booking",
-    tags: ["forest", "water", "family", "stay"],
+    category: "adventure",
+    bestFor: "Beginners, guided groups",
     summary: "A Temburong eco-stay lead from your Google result list, with cabin-style accommodation and rainforest surroundings."
   },
   {
@@ -36,7 +39,8 @@ const campsites = [
     area: "Labi, Belait",
     mood: "Wetland boardwalk",
     effort: "Check rules",
-    tags: ["forest", "water", "family"],
+    category: "park",
+    bestFor: "Families, photo walks",
     summary: "A freshwater swamp and recreation forest with boardwalk scenery, gazebos, and picnic-style facilities."
   },
   {
@@ -46,7 +50,8 @@ const campsites = [
     area: "Tutong",
     mood: "Lakeside camping",
     effort: "Check permit",
-    tags: ["water", "family"],
+    category: "park",
+    bestFor: "Families, new campers",
     summary: "A Tutong recreation park noted for outdoor activities, lakes, cultural houses, and camping-friendly open space."
   },
   {
@@ -56,7 +61,8 @@ const campsites = [
     area: "Temburong",
     mood: "Rainforest trip",
     effort: "Book tour",
-    tags: ["forest", "water", "stay"],
+    category: "adventure",
+    bestFor: "Experienced campers, guided trips",
     summary: "Brunei's Green Jewel, usually visited through arranged tours and longboat access rather than casual drive-in camping."
   },
   {
@@ -66,7 +72,8 @@ const campsites = [
     area: "Jerudong",
     mood: "Hillside base",
     effort: "Check rules",
-    tags: ["forest", "family"],
+    category: "park",
+    bestFor: "Hikers, family day groups",
     summary: "A popular forest recreation park near Jerudong, better for hiking and group outdoor days unless camping permission is confirmed."
   },
   {
@@ -76,7 +83,8 @@ const campsites = [
     area: "Muara",
     mood: "Beach camp",
     effort: "Check rules",
-    tags: ["water", "family"],
+    category: "beach",
+    bestFor: "Beach beginners, groups",
     summary: "A coastal campsite lead for sea breeze, open sand, and simple group outings near Muara."
   },
   {
@@ -86,7 +94,8 @@ const campsites = [
     area: "Berakas",
     mood: "Forest campsite",
     effort: "Check permit",
-    tags: ["forest", "family"],
+    category: "park",
+    bestFor: "Families, starter camping",
     summary: "A forest reserve campsite lead with shaded surroundings and easy access from the Brunei-Muara area."
   },
   {
@@ -96,7 +105,8 @@ const campsites = [
     area: "Tutong",
     mood: "Beach park",
     effort: "Check rules",
-    tags: ["water", "family"],
+    category: "beach",
+    bestFor: "Families, beach groups",
     summary: "A well-known Tutong beach park lead for relaxed coastal camping, picnics, and sunset trips."
   },
   {
@@ -106,7 +116,8 @@ const campsites = [
     area: "Belait",
     mood: "Coastal camp",
     effort: "Check access",
-    tags: ["water", "family"],
+    category: "beach",
+    bestFor: "Group planners",
     summary: "A Belait coastal lead for groups looking for open beach space and a quieter west-side outing."
   },
   {
@@ -116,7 +127,8 @@ const campsites = [
     area: "Batang Duri, Temburong",
     mood: "Riverside park",
     effort: "Check access",
-    tags: ["forest", "water", "family"],
+    category: "park",
+    bestFor: "Weekend campers",
     summary: "A Temburong park lead near Batang Duri, useful for riverside nature days and campsite scouting."
   },
   {
@@ -126,7 +138,8 @@ const campsites = [
     area: "Mukim Labu, Temburong",
     mood: "Lakeside nature",
     effort: "Check access",
-    tags: ["water", "forest", "family"],
+    category: "adventure",
+    bestFor: "Weekend campers",
     summary: "A Mukim Labu lake lead for nature trips, waterside scenery, and campsite scouting in Temburong."
   },
   {
@@ -136,7 +149,8 @@ const campsites = [
     area: "Selapon, Temburong",
     mood: "Nature retreat",
     effort: "Check access",
-    tags: ["forest", "water", "family"],
+    category: "park",
+    bestFor: "Weekend campers",
     summary: "A Selapon nature lead near Pondok Peranginan Selapon, suitable for checking picnic, rest, and camping access."
   },
   {
@@ -146,7 +160,8 @@ const campsites = [
     area: "Kg Labi, Belait",
     mood: "Waterfall trail",
     effort: "Check trail",
-    tags: ["forest", "water"],
+    category: "adventure",
+    bestFor: "Experienced hikers",
     summary: "A Kg Labi waterfall lead for forest outings and campsite scouting around Belait's interior."
   }
 ];
@@ -159,9 +174,9 @@ let activeFilter = "all";
 function renderCards() {
   const query = searchInput.value.trim().toLowerCase();
   const matches = campsites.filter((site) => {
-    const searchable = `${site.name} ${site.source} ${site.area} ${site.mood} ${site.summary} ${site.tags.join(" ")}`.toLowerCase();
+    const searchable = `${site.name} ${site.source} ${site.area} ${site.mood} ${site.bestFor} ${site.category} ${site.summary}`.toLowerCase();
     const matchesSearch = !query || searchable.includes(query);
-    const matchesFilter = activeFilter === "all" || site.tags.includes(activeFilter);
+    const matchesFilter = activeFilter === "all" || site.category === activeFilter;
     return matchesSearch && matchesFilter;
   });
 
@@ -183,10 +198,11 @@ function renderCards() {
             <p>${site.summary}</p>
             <ul class="meta-list">
               <li><span>Mood</span><strong>${site.mood}</strong></li>
+              <li><span>Best for</span><strong>${site.bestFor}</strong></li>
               <li><span>Planning status</span><strong>${site.effort}</strong></li>
             </ul>
             <div class="tag-row">
-              ${site.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}
+              <span class="tag">${site.category}</span>
             </div>
           </div>
           <a class="text-link" href="${site.url}" target="_blank" rel="noreferrer">View source</a>
